@@ -25,20 +25,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 97d2423e0fbe94275a70f24e7a802ab9, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 1, y: 3}
         m_Offset: {x: 0, y: 0}
     - _NoiseMap:
         m_Texture: {fileID: 2800000, guid: e50f7db056a0d4942b69b6c82354d79a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Cutoff: 0.456
-    - _EmissionIntensity: 78.6
+    - _Cutoff: 0.608
+    - _EmissionIntensity: 100
     - _Gravity: 20
     - _NoiseStrength: 0.5
     - _NormalStrength: 0
-    - _ScrollYSpeed: 2.2
-    - _Smoothness: 0.06
+    - _ScrollYSpeed: 0.1
+    - _Smoothness: 0
     m_Colors:
-    - _EmissionColor: {r: 2, g: 0.38431373, b: 0, a: 1}
+    - _EmissionColor: {r: 2.5223136, g: 1.7489628, b: 1.7489628, a: 1}
   m_BuildTextureStacks: []

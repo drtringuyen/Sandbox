@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private Quaternion targetRotBody;
     private bool isInCameraAnimation;
     private IEnumerator cameraCoroutine;
+    private bool currentRunningState = false;
 
     public enum Action
     {
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
         rightclickable = true;
         scrollable = true;
 
+        LeanTween.moveLocalY(cameraHolder.gameObject , 0.3f, 3).setEaseInOutBack().setLoopPingPong();
     }
 
     void Update()
@@ -85,6 +87,8 @@ public class PlayerController : MonoBehaviour
         float movementDirectionY = moveDirection.y;
 
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+
+        ReactToRun(isRunning);
 
         if (Input.GetButton("Jump") && movable && characterController.isGrounded)
         {
@@ -119,7 +123,21 @@ public class PlayerController : MonoBehaviour
 
         handleMouse();
 
+    }
 
+    private void ReactToRun(bool isRunning)
+    {
+        if (isRunning == currentRunningState) return;
+        if (isRunning)
+        {
+            HUD.startRun();
+        }
+        else
+        {
+            HUD.stopRun();
+        }
+
+        currentRunningState = isRunning;
     }
 
     private void handleMouse()
