@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: weather
+  m_Shader: {fileID: 4800000, guid: 4e5b4888c83064edb88d36cf3e4c7157, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 3dd4997a9df995b4687f1cd2d9a7a0ef, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 97d2423e0fbe94275a70f24e7a802ab9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseMap:
+        m_Texture: {fileID: 2800000, guid: e50f7db056a0d4942b69b6c82354d79a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Cutoff: 0.456
+    - _EmissionIntensity: 78.6
+    - _Gravity: 20
+    - _NoiseStrength: 0.5
+    - _NormalStrength: 0
+    - _ScrollYSpeed: 2.2
+    - _Smoothness: 0.06
+    m_Colors:
+    - _EmissionColor: {r: 2, g: 0.38431373, b: 0, a: 1}
+  m_BuildTextureStacks: []
