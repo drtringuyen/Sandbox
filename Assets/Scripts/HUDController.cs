@@ -16,6 +16,8 @@ public class HUDController : MonoBehaviour
     private bool lockTargetL = false;
     private bool lockTargetR = false;
 
+    private GaugeController gauge;
+
     private Transform newPositionL, newPositionR;
 
     private Material material;
@@ -25,10 +27,11 @@ public class HUDController : MonoBehaviour
 
         deleteLeafBone();
 
-        //handL = GameObject.Find("Hand.L").gameObject.AddComponent<HUD_hand>();
-        //handR = GameObject.Find("Hand.R").gameObject.AddComponent<HUD_hand>();
+        gauge = GameObject.FindObjectOfType<GaugeController>();
 
         material= mesh.sharedMaterial;
+
+        LeanTween.moveLocalY(gameObject, 0f, 0.5f).setEaseInOutCubic();
 
     }
 
@@ -70,5 +73,11 @@ public class HUDController : MonoBehaviour
         {
             DestroyImmediate(child.GetChild(0).gameObject);
         }
+    }
+
+    internal void ScrollForward(bool forward)
+    {
+        if (forward) gauge.FireOn();
+        else gauge.FireOff();
     }
 }

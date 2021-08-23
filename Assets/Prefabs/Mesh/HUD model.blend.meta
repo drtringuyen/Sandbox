@@ -10,6 +10,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: UI
+    second: {fileID: 2100000, guid: cbbb7a7dc49cf47ceab996e5dcd6ba80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: weather slow
     second: {fileID: 2100000, guid: 5008468b4b36246f19d1b340470b08c0, type: 2}
   materials:

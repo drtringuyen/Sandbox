@@ -8,20 +8,40 @@ public class GrabableObject : MonoBehaviour
     private GameObject TakeEffect;
     [SerializeField]
     private GameObject Indicator;
+    [SerializeField]
+    private GameObject Content;
 
-    private void Awake()
+    private Transform originalParent;
+
+    protected bool isGrabbing = false;
+
+    private void Start()
     {
+        originalParent = this.transform.parent;
+
         IndicateOn(false);
-        GrabOn(false);
+        GrabOn(false,null);
+
+        if(Content)
+            LeanTween.rotateAroundLocal(Content, new Vector3(1,1,1), 12f, 3f).setLoopPingPong();
     }
 
     public void IndicateOn(bool On)
     {
-        Indicator.SetActive(On);
+        if(Indicator)
+            Indicator.SetActive(On);
     }
 
-    public void GrabOn(bool On)
+    public void GrabOn(bool On, Transform grabBy)
     {
+        //important Flag to update the lines
+        isGrabbing = On;
+
+        if (On && grabBy != null) this.transform.SetParent(grabBy, true);
+        else transform.SetParent(originalParent, true);
+
+        if (!Indicator || !TakeEffect) return;
+
         TakeEffect.SetActive(On);
         Indicator.SetActive(!On);
     }

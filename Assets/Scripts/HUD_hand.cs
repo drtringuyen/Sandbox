@@ -25,10 +25,10 @@ public class HUD_hand : MonoBehaviour
         if (name.Contains("L"))
         {
             left = true;
-            LeanTween.moveLocalZ(gameObject, 0.1f, 2).setEaseInOutSine().setLoopPingPong();
+            LeanTween.moveLocalY(gameObject, 0.05f, 2).setEaseInOutSine().setLoopPingPong();
         }
             
-        else LeanTween.moveLocalZ(gameObject, 0.1f, 3).setEaseInOutSine().setLoopPingPong();
+        else LeanTween.moveLocalY(gameObject, 0.05f, 3).setEaseInOutSine().setLoopPingPong();
 
         ////turn off mesh renderer of the Trigger
         //transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
@@ -44,18 +44,17 @@ public class HUD_hand : MonoBehaviour
         if (other.gameObject.layer == 6)
         {
             target = other.transform;
-            TurnOnIndicatorGizmo(other.gameObject, true);
+            TurnOnCursorOverIndicator(other.gameObject, true);
         }
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("foundsomething");
         if (other.gameObject.layer == 6)
         {
             target = null;
-            TurnOnIndicatorGizmo(other.gameObject, false);
+            TurnOnCursorOverIndicator(other.gameObject, false);
         }
 
     }
@@ -81,8 +80,7 @@ public class HUD_hand : MonoBehaviour
         //if luckily hit the target, take it
         else
         {
-            target.transform.SetParent(transform, true);
-            TurnOnGrabGizmo(target.gameObject, true);
+            GrabOn(target.gameObject, true);
             isGrabbing = true;
         }
     }
@@ -90,22 +88,21 @@ public class HUD_hand : MonoBehaviour
     public void ReleaseTarget()
     {
         if (!target) return;
-        target.transform.SetParent(null, true);
-        TurnOnGrabGizmo(target.gameObject, false);
+        GrabOn(target.gameObject, false);
         isGrabbing = false;
         LeanTween.moveLocal(gameObject, origin, 1f);
 
     }
 
-    private static void TurnOnGrabGizmo(GameObject other,bool On)
+    private void GrabOn(GameObject other,bool On)
     {
         if (other.CompareTag("Grabbable"))
         {
-            other.gameObject.GetComponent<GrabableObject>().GrabOn(On);
+            other.gameObject.GetComponent<GrabableObject>().GrabOn(On,transform);
         }
     }
 
-    private static void TurnOnIndicatorGizmo(GameObject other, bool On)
+    private static void TurnOnCursorOverIndicator(GameObject other, bool On)
     {
         if (other.CompareTag("Grabbable"))
         {

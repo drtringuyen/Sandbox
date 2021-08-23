@@ -63,16 +63,11 @@ public class PlayerController : MonoBehaviour
         rightclickable = true;
         scrollable = true;
 
-        LeanTween.moveLocalY(cameraHolder.gameObject , 0.3f, 3).setEaseInOutBack().setLoopPingPong();
+        LeanTween.moveLocalZ(cameraHolder.gameObject , 0.3f, 3).setEaseInOutBack().setLoopPingPong();
     }
 
     void Update()
     {
-        //if (Input.mouseScrollDelta.y != 0 && scrollable)
-        //{
-        //    bool clockwise = Input.mouseScrollDelta.y < 0 ? true : false;
-        //}
-
         ////check if nobody touch the controller => dont waste time update any stats on the player
         //if (ControllIntact())
         //    return;
@@ -142,6 +137,8 @@ public class PlayerController : MonoBehaviour
 
     private void handleMouse()
     {
+        if (Input.mouseScrollDelta.y != 0 && scrollable)
+            HUD.ScrollForward( Input.mouseScrollDelta.y > 0 ? true : false);
         if (Input.GetMouseButtonDown(0) && clickable)
             HUD.PerformLeft();
 
@@ -155,10 +152,6 @@ public class PlayerController : MonoBehaviour
             HUD.CancelRight();
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
 
     private IEnumerator CoolDownAction(float cooldownTime, Action action)
     {
