@@ -65,6 +65,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: water.transparent
+    second: {fileID: 2100000, guid: 5008468b4b36246f19d1b340470b08c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: weather.glowing
     second: {fileID: 2100000, guid: 29f8fee722b1b47389b97fe3bcb3a571, type: 2}
   - first:

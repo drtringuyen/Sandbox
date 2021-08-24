@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     Vector3 moveDirection = Vector3.zero;
     float rotationX, rotationY = 0;
 
+
+
     //public ShakeEvent cameraShaker;
 
     //public AudioPreset audioPreset;
